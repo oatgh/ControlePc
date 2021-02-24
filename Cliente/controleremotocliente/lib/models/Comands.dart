@@ -11,13 +11,24 @@ class Commands extends StatefulWidget {
 class _CommandsState extends State<Commands> {
   @override
   TextEditingController _controllerTxt = TextEditingController();
-  _enviaCmd(String comand)async{
+  _enviaCmd(String comand, int choose)async{
     final prefs = await SharedPreferences.getInstance();
     Map<String, dynamic> sendMap = Map();
 
     sendMap["pass"] = prefs.getString("pass");
-    sendMap["msg"] = comand;
+    switch(choose){
 
+      case 0:
+        sendMap["msg"] = "shutdown";
+        break;
+      case 1:
+        sendMap["msg"] = "message";
+        break;
+      case 2:
+        sendMap["msg"] = "person";
+        break;
+    }
+    sendMap["args"] = comand;
     String sendJson = json.encode(sendMap);
     Connect.enviaComando(sendJson);
   }
@@ -37,10 +48,11 @@ class _CommandsState extends State<Commands> {
                 FlatButton(onPressed: (){
 
                   if(Connect.isConectado){
+                    Navigator.pop(context);
                     try{
                       if(_controllerTxt.text.isNotEmpty){
-                        String cmd = "shutdown -s -t ${_controllerTxt.text}";
-                        _enviaCmd(cmd);
+                        String cmd = "-s -t ${_controllerTxt.text}";
+                        _enviaCmd(cmd, 0);
                       }
                     }catch(err){
                       Fluttertoast.showToast(msg: "Erro!");
@@ -60,7 +72,10 @@ class _CommandsState extends State<Commands> {
             );
           });
         },
-        )
+        ),
+        ListTile(title: Text("CANCELAR DESLIGAMENTO"),
+          subtitle: Text("Cancela o desligamento do computador"),
+        onTap: () => _enviaCmd("-a", 0),)
       ],),
 
 

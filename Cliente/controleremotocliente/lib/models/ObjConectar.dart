@@ -51,6 +51,7 @@ class Connect{
       socket.write(comando);
       Fluttertoast.showToast(
           msg: "Comando ${json.decode(comando)["msg"]}\nEnviado");
+      conectar();
     }catch(err)
     {
       Fluttertoast.showToast(msg: "Ocorreu um erro ${err}");
@@ -63,12 +64,14 @@ class Connect{
     try
     {
       socket.write(comando);
-      Fluttertoast.showToast(
-          msg: "Comando ${json.decode(comando)["msg"]}\nEnviado");
+      conectar();
     }catch(err)
     {
       Fluttertoast.showToast(msg: "Ocorreu um erro ${err.toString()}");
     }
+    Fluttertoast.showToast(
+        msg: "Comando ${json.decode(comando)["msg"]}\nEnviado");
+
     ret();
     // try{
     //  Socket.connect(hostIp, port).then((socket){

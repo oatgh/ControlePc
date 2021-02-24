@@ -1,0 +1,15 @@
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.csprojAssemblyReference.cache
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.AssemblyInfoInputs.cache
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.AssemblyInfo.cs
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.csproj.CoreCompileInputs.cache
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.exe
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.deps.json
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.runtimeconfig.json
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.runtimeconfig.dev.json
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.dll
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Testando recebimento tcp.pdb
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.dll
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.pdb
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.genruntimeconfig.cache
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\oatgh\source\repos\Testando recebimento tcp\Testando recebimento tcp\obj\Debug\netcoreapp3.1\Testando recebimento tcp.csproj.CopyComplete

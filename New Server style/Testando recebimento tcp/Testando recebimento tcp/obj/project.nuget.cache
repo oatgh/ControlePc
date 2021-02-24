@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "gyvMuNO9+gUydoenhtjPNzqQsqsap5mwZnaiHGBK+Bn02+GBZyX+UMzoA45/tA0qxigwELWwo4Ose2SI/i2DhQ==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\oatgh\\source\\repos\\Testando recebimento tcp\\Testando recebimento tcp\\Testando recebimento tcp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\oatgh\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
