@@ -100,10 +100,102 @@ namespace ControleRemoto
         private void button2_Click(object sender, EventArgs e)
         {
 
+            //new Thread(() => startServer()).Start();
             startServer();
+        }
+        static TcpListener socket = new TcpListener(IPAddress.Parse(Properties.Settings.Default.hostIP), Properties.Settings.Default.port);
+        private void startServer()
+        {
+            if (!isOn)
+            {
+                try
+                {
 
+                    socket.Start();
+                    isOn = true;
+                    txtStatus.Text = "Servidor inciado";
+                    btnStart.Text = "Desligar";
+                    new Thread(() => {
+                        if (isOn)
+                        {
+                            do
+                            {
+                                try
+                                {
+                                    aceptClient();
+                                }
+                                catch { }
+                            } while (!aceptClient());
+                        }
+                    }).Start();
+                }
+                catch (Exception e) { txtStatus.Text = e.Message; }
+            }
+            else
+            {
+                socket.Stop();
+                isOn = false;
+                txtStatus.Text = "";
+                btnStart.Text = "Ligar";
+            }
         }
 
+        static bool aceptClient()
+        {
+            
+
+            
+            TcpClient client = socket.AcceptTcpClient();
+
+            try
+            {
+
+                NetworkStream network = client.GetStream();
+                byte[] buffer = new byte[1024];
+                int bytesReceived = network.Read(buffer, 0, buffer.Length);
+                string Decoded = Encoding.UTF8.GetString(buffer);
+                Console.WriteLine(Decoded);
+                try
+                {
+                    var json = JsonConvert.DeserializeObject<Dictionary<string, string>>(Decoded);
+                    try
+                    {
+                        if (json != null && json["msg"].Equals("message"))
+                        {
+                            MessageBox.Show(json["args"], "Mensagem do cliente");
+                            Console.WriteLine(json["args"]);
+                        }
+                        else if (json != null && json["msg"].Equals("shutdown"))
+                        {
+                            Process.Start(json["msg"].Trim(), json["args"]);
+                        }
+                    }
+                    catch
+                    {
+                        //socket.Stop();
+                        return false;
+                    }
+
+                }
+                catch
+                {
+                    //socket.Stop();
+                    return false;
+                }
+            }
+            catch
+            {
+                //socket.Stop();
+                return false;
+            }
+            //socket.Stop();
+            return false;
+        }
+
+
+
+
+        /*
         private static TcpListener Server = new TcpListener(IPAddress.Parse(Properties.Settings.Default.hostIP)
             , Properties.Settings.Default.port);
 
@@ -169,51 +261,59 @@ namespace ControleRemoto
                 if (bytesReceived > 0) 
                 {
                     string Decoded = Encoding.UTF8.GetString(buffer);
-
-
-                    var dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(Decoded);
-
-                    if (Properties.Settings.Default.forcePass == CheckState.Checked)
+                    Dictionary<string, string> dict;
+                    try
                     {
-                        if (dict["pass"].Equals(Properties.Settings.Default.senha))
+                        dict = JsonConvert.DeserializeObject<Dictionary<string, string>>(Decoded);
+                        if (Properties.Settings.Default.forcePass == CheckState.Checked)
                         {
+                            if (dict["pass"].Equals(Properties.Settings.Default.senha))
+                            {
 
-                            String Command = dict["msg"].Substring(0, dict["msg"].IndexOf(' '));
-                            String Argment = dict["msg"].Substring(dict["msg"].IndexOf(' '),
-                                dict["msg"].Length - dict["msg"].IndexOf(' '));
-                            
-                            Process.Start(Command, Argment.Trim());
+                                String Command = dict["msg"].Substring(0, dict["msg"].IndexOf(' '));
+                                String Argment = dict["msg"].Substring(dict["msg"].IndexOf(' '),
+                                    dict["msg"].Length - dict["msg"].IndexOf(' '));
+
+                                Process.Start(Command, Argment.Trim());
+                            }
+                            else
+                            {
+                                MessageBox.Show("Senha incorreta", "Erro");
+                            }
                         }
-                        else
+                        else if (Properties.Settings.Default.forcePass == CheckState.Unchecked)
                         {
-                            MessageBox.Show("Senha incorreta", "Erro");
+                            try
+                            {
+                                String Command = dict["msg"].Substring(0, dict["msg"].IndexOf(' '));
+                                String Argment = dict["msg"].Substring(dict["msg"].IndexOf(' '),
+                                    dict["msg"].Length - dict["msg"].IndexOf(' '));
+
+                                Process.Start(Command, Argment.Trim());
+                            }
+                            catch (Exception e)
+                            {
+                                MessageBox.Show(e.Message);
+                            }
+
+                            MessageBox.Show(dict["msg"], "Mensagem enviada!");
+
                         }
                     }
-                    else if (Properties.Settings.Default.forcePass == CheckState.Unchecked)
+                    catch(Exception e)
                     {
-                        try
-                        {
-                            String Command = dict["msg"].Substring(0, dict["msg"].IndexOf(' '));
-                            String Argment = dict["msg"].Substring(dict["msg"].IndexOf(' '), 
-                                dict["msg"].Length - dict["msg"].IndexOf(' '));
-                            
-                            Process.Start(Command, Argment.Trim());
-                        }
-                        catch(Exception e)
-                        {
-                            MessageBox.Show(e.Message);
-                        }
-                        
-                        MessageBox.Show(dict["msg"], "Mensagem enviada!");
-
+                        MessageBox.Show(e.Message);
                     }
+                    
+
+                    
                     
 
                    
                 }
             } while (true);
         }
-
+        */
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.Hide();
