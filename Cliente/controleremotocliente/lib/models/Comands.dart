@@ -75,7 +75,30 @@ class _CommandsState extends State<Commands> {
         ),
         ListTile(title: Text("CANCELAR DESLIGAMENTO"),
           subtitle: Text("Cancela o desligamento do computador"),
-        onTap: () => _enviaCmd("-a", 0),)
+        onTap: () => _enviaCmd("-a", 0),),
+        ListTile(title: Text("MANDAR AVISO"),
+          subtitle: Text("Manda um aviso de texto para o servidor"),
+          onTap: () {
+          TextEditingController controlerTextMsg = TextEditingController();
+            showDialog(context: context, builder: (context){
+              return AlertDialog(
+               title: Text("Qual mensagem você deseja enviar?"),
+               content: TextField(controller: controlerTextMsg,),
+               actions: [
+                 Row(children: [
+                   FlatButton(onPressed: (){
+                     _enviaCmd(controlerTextMsg.text, 1);
+                     Navigator.pop(context);
+                   }, child: Text("Enviar")),
+                   FlatButton(onPressed: (){
+                     Navigator.pop(context);
+                   }, child: Text("Cancelar"))
+                 ],)
+               ],
+
+              );
+            });
+          })
       ],),
 
 

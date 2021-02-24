@@ -79,7 +79,7 @@ class _HomePageState extends State<HomePage> {
           Text("Controle Remoto Cliente"),
           IconButton(icon: isOn == false ? Icon(Icons.play_arrow) :
               Icon(Icons.stop), onPressed: () async{
-           bool conectado = await Connect.conectar();
+           bool conectado = await Connect.conectar(0);
             setState(() {
               isOn = conectado;
             });

@@ -15,7 +15,7 @@ class Connect{
 
   static Socket socket;
   static bool isConectado = false;
-  static Future<bool> conectar() async
+  static Future<bool> conectar(int choose) async
   {
     ret();
 
@@ -23,9 +23,14 @@ class Connect{
       try
       {
         socket = await Socket.connect("10.0.0.123", 2000);
-        Fluttertoast.showToast(msg: "Conectado");
+
         print("Conectado");
         isConectado = true;
+        switch(choose){
+          case 0:
+            Fluttertoast.showToast(msg: "Conectado");
+            break;
+        }
         return true;
       }catch(e){
         Fluttertoast.showToast(msg: "Erro ao conectar ${e.toString()}");
@@ -36,7 +41,11 @@ class Connect{
     }else{
       socket.close();
       isConectado = false;
-      Fluttertoast.showToast(msg: "Disconectado");
+      switch(choose){
+        case 0:
+          Fluttertoast.showToast(msg: "Disconectado");
+          break;
+      }
       print("Disconectado");
       return false;
     }
@@ -46,16 +55,22 @@ class Connect{
 
   static enviaComando(String comando) async
   {
-    try
-    {
-      socket.write(comando);
-      Fluttertoast.showToast(
-          msg: "Comando ${json.decode(comando)["msg"]}\nEnviado");
-      conectar();
-    }catch(err)
-    {
-      Fluttertoast.showToast(msg: "Ocorreu um erro ${err}");
+    if(isConectado){
+      try
+      {
+        socket.write(comando);
+        Fluttertoast.showToast(
+            msg: "Enviado");
+        conectar(1);
+        conectar(1);
+      }catch(err)
+      {
+        Fluttertoast.showToast(msg: "Ocorreu um erro ${err}");
+      }
+    }else{
+      Fluttertoast.showToast(msg: "Você nao esta conectado");
     }
+
 
   }
 
@@ -64,7 +79,7 @@ class Connect{
     try
     {
       socket.write(comando);
-      conectar();
+      conectar(0);
     }catch(err)
     {
       Fluttertoast.showToast(msg: "Ocorreu um erro ${err.toString()}");
