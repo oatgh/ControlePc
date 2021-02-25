@@ -20,3 +20,25 @@ C:\Users\oatgh\source\repos\ControleRemoto\ControleRemoto\obj\Debug\ControleRemo
 C:\Users\oatgh\source\repos\ControleRemoto\ControleRemoto\bin\Debug\SuperSocket.ClientEngine.dll
 C:\Users\oatgh\source\repos\ControleRemoto\ControleRemoto\bin\Debug\WebSocket4Net.dll
 C:\Users\oatgh\source\repos\ControleRemoto\ControleRemoto\bin\Debug\CmdLine.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\ControleRemoto.exe.config
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\ControleRemoto.exe
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\ControleRemoto.pdb
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\CmdLine.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\Newtonsoft.Json.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\SuperSocket.ClientEngine.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\WebSocket4Net.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\zxing.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\zxing.presentation.dll
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\Newtonsoft.Json.xml
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\zxing.xml
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\bin\Debug\zxing.presentation.xml
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.csprojAssemblyReference.cache
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.frmLoad.resources
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.Maincs.resources
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.Properties.Resources.resources
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.StatCfg.resources
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.csproj.GenerateResource.cache
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.csproj.CoreCompileInputs.cache
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.csproj.CopyComplete
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.exe
+C:\Users\oatgh\Desktop\ControlePC\Codigo servidor\ControleRemoto\ControleRemoto\ControleRemoto\obj\Debug\ControleRemoto.pdb

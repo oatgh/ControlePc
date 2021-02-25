@@ -85,8 +85,8 @@ namespace ControleRemoto
 
         private void Maincs_FormClosing(object sender, FormClosingEventArgs e)
         {
+            socket.Stop();
             Application.Exit();
-
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -100,12 +100,24 @@ namespace ControleRemoto
         private void button2_Click(object sender, EventArgs e)
         {
 
-            //new Thread(() => startServer()).Start();
             startServer();
         }
         static TcpListener socket = new TcpListener(IPAddress.Parse(Properties.Settings.Default.hostIP), Properties.Settings.Default.port);
         private void startServer()
         {
+            Thread ComecaProc = new Thread(() => {
+                if (isOn)
+                {
+                    do
+                    {
+                        try
+                        {
+                            aceptClient();
+                        }
+                        catch { }
+                    } while (!aceptClient());
+                }
+            });
             if (!isOn)
             {
                 try
@@ -115,24 +127,13 @@ namespace ControleRemoto
                     isOn = true;
                     txtStatus.Text = "Servidor inciado";
                     btnStart.Text = "Desligar";
-                    new Thread(() => {
-                        if (isOn)
-                        {
-                            do
-                            {
-                                try
-                                {
-                                    aceptClient();
-                                }
-                                catch { }
-                            } while (!aceptClient());
-                        }
-                    }).Start();
+                    ComecaProc.Start();
                 }
                 catch (Exception e) { txtStatus.Text = e.Message; }
             }
             else
             {
+                ComecaProc.Abort();
                 socket.Stop();
                 isOn = false;
                 txtStatus.Text = "";
@@ -143,13 +144,9 @@ namespace ControleRemoto
         static bool aceptClient()
         {
             
-
-            
-            TcpClient client = socket.AcceptTcpClient();
-
             try
             {
-
+                TcpClient client = socket.AcceptTcpClient();
                 NetworkStream network = client.GetStream();
                 byte[] buffer = new byte[1024];
                 int bytesReceived = network.Read(buffer, 0, buffer.Length);
@@ -162,12 +159,12 @@ namespace ControleRemoto
                     {
                         if (json != null && json["msg"].Equals("message"))
                         {
-                            MessageBox.Show(json["args"], "Mensagem do cliente");
+                            new Thread(() => MessageBox.Show(json["args"], "Mensagem do cliente")).Start();
                             Console.WriteLine(json["args"]);
                         }
                         else if (json != null && json["msg"].Equals("shutdown"))
                         {
-                            Process.Start(json["msg"].Trim(), json["args"]);
+                            new Thread(() => Process.Start(json["msg"].Trim(), json["args"])).Start();
                         }
                     }
                     catch
